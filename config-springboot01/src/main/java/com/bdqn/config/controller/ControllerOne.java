@@ -13,7 +13,7 @@ import java.util.Arrays;
  */
 @Controller
 public class ControllerOne {
-
+//修改了一些东西
     @RequestMapping("/hello")
     public String hello(Model model){
 model.addAttribute("user","<h2>zhansan</h2>");
