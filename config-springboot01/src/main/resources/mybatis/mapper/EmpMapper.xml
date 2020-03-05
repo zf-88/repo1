@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.config.mapper.EmpMapper">
+    <resultMap id="EmpMap" type="com.bdqn.config.entity.Employee">
+        <id property="id" column="empId"/>
+        <association property="department" javaType="com.bdqn.config.entity.Department">
+        <id property="id" column="id"/>
+    </association>
+
+    </resultMap>
+    <select id="getAll" resultMap="EmpMap">
+select e.empId,e.lastName,e.email,e.gender,e.birth,d.id,d.departmentName from employee e,department d where e.depId=d.id
+  </select>
+
+    <select id="getEmployeeById" resultMap="EmpMap">
+        select * from employee e,department d where e.depId=d.id and empId=#{id}
+
+    </select>
+
+    <delete id="deleteById">
+
+        delete  from employee where empId=#{id}
+    </delete>
+
+    <insert id="save">
+     insert  into employee(empId,lastName,email,gender,birth,depId) values (#{id},#{lastName},#{email},#{gender},#{birth},#{department.id})
+
+    </insert>
+
+    <update id="update">
+        update employee
+        set lastName=#{lastName} ,email=#{email},gender=#{gender},birth=#{birth},depId=#{department.id}
+        where empId=#{id}
+
+    </update>
+</mapper>

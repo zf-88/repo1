@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="icon" type="image/x-icon" href="/1.ico" />
+</head>
+<body>
+<h2>首页</h2>
+<!--thymeleaf语法以th开头-->
+<!--不转义-->
+<div th:text="${user}"></div>
+<!--转义-->
+<div th:utext="${user}"></div>
+
+<h2 th:each="name:${list}" th:text="${name}"></h2>
+<!-- <h2 th:each="name:${list}" >[[${name}]]</h2> 方法二 不推荐使用-->
+
+
+
+
+</body>
+</html>
